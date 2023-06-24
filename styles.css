@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 :root {
     --text-color: #fff;
     --bg-url: url(assets/bg-mobile-dark.jpg);
@@ -81,11 +80,17 @@ body * {
     transform: translateY(-50%);
     top: 50%;
     left: 0;
+
+    animation: slide-back 0.2 s;
+
+}
+
+#switch button:hover {
+    outline: 8px solid var(--high-light-color);
 }
 
 .light-mode #switch button {
-    right: 0;
-    left: initial;
+    animation: slide-in 0.4s forwards;
 }
 
 #switch span {
@@ -105,11 +110,9 @@ body * {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    width: 360px;
+    width: 100%;
     padding: 24px;
 }
-
-
 
 #containerButton p a {
     display: flex;
@@ -158,4 +161,34 @@ body * {
 
 #container a:hover {
     background-color: var(--high-light-color);
+}
+
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(./assets/bg-dark.jpg)
+    }
+
+    .light-mode {
+        --bg-url: url(./assets/bg-light.jpg)
+    }
+}
+
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 50%;
+    }
+
+    to {
+        left: 0
+    }
 }
